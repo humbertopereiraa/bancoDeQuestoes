@@ -4,7 +4,7 @@
   "description": "API Banco de Questões",
   "main": "index.ts",
   "scripts": {
-    "dev": "ts-node ./src/index.ts",
+    "dev":  "nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"ts-node ./src/index.ts\"",
     "build": "tsc",
     "start": "node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,6 +28,7 @@
     "typescript": "^4.9.4"
   },
   "devDependencies": {
+    "nodemon": "^2.0.20",
     "ts-node": "^10.9.1"
   }
 }
