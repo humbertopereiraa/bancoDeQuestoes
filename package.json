@@ -1,0 +1,33 @@
+{
+  "name": "bancodequestoes",
+  "version": "1.0.0",
+  "description": "API Banco de Questões",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts",
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humbertopereiraa/bancoDeQuestoes.git"
+  },
+  "author": "Humberto de Paula Pereira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/humbertopereiraa/bancoDeQuestoes/issues"
+  },
+  "homepage": "https://github.com/humbertopereiraa/bancoDeQuestoes#readme",
+  "dependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.15",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
