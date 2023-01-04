@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1672794280904" clover="3.2.0">
-  <project timestamp="1672794280904" name="All files">
+<coverage generated="1672795137355" clover="3.2.0">
+  <project timestamp="1672795137355" name="All files">
     <metrics statements="15" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="1" coveredmethods="0" elements="28" coveredelements="0" complexity="0" loc="15" ncloc="15" packages="1" files="2" classes="2"/>
     <file name="configuracao.ts" path="C:\Users\Humberto\Documents\bancoDeQuestoes\src\configuracao.ts">
       <metrics statements="2" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="0" coveredmethods="0"/>

@@ -1,0 +1,29 @@
+app
+|- node_modules
+|- src
+  |- application
+     |- usecases
+        |- 
+  |- domain
+     |- entities
+        |- professor.ts
+	|- diciplina.ts
+	|- questao.ts
+     |- repository
+        |- professorRepository.ts
+	|- diciplinaRepository.ts
+	|- questaoRepository.ts
+  |- infrastructure 
+     |- database
+        |- conexao.ts
+     |- repository
+     |- http
+        |- http.ts
+        |- expressAdapter.ts
+     |- factory
+     |- controller
+  |- app.ts
+|- tests
+   |- unit
+   |- integration
+|- .env
