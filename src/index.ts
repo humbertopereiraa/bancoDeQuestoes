@@ -1,18 +1,21 @@
 import * as dotenv from "dotenv"
+dotenv.config()
 import express from "express"
-import cors from "cors"
-import helmet from "helmet"
+import path from "path"
+import app from "./app"
 import { Configuracao } from "./configuracao"
 
-dotenv.config()
-const app = express()
-
+const consign = require('consign')
 const PORT = Configuracao.http.port
+const router = express.Router()
+app.use(router)
 
-app.use(helmet())
-app.use(cors())
-app.use(express.json())
+consign({
+  cwd: path.join(__dirname, 'presentation'),
+  locale: 'pt-br',
+  extensions: ['.js', '.ts', '.json', '.node']
+}).include('routes').into(app)
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`)
+  console.log(`API Banco de questões rodando na porta: ${PORT}`)
 })
