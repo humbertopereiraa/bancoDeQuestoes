@@ -2,12 +2,11 @@ import { GetByIdProfessor } from "../../application/usecases/getByIdProfessor"
 import { Request, Response } from 'express'
 import { validationResult } from "express-validator"
 import { BAD_REQUEST, SERVER_ERROR, OK } from "../../utils/error"
+import { Conexao } from "../../infra/database/conexao"
+import { ProfessorRepositoryImp } from "../../infra/repository/professorRepositoryImp"
 
 class ProfessorController {
-  private getByIdProfessor: GetByIdProfessor
-  constructor() {
-    this.getByIdProfessor = new GetByIdProfessor()
-  }
+  constructor(private getByIdProfessor: GetByIdProfessor) {}
 
   async getById(req: Request, res: Response): Promise<any> {
     try {
@@ -24,4 +23,7 @@ class ProfessorController {
   }
 }
 
-export const professorController = new ProfessorController()
+const conexao = Conexao.getInstance()
+const professorRepository = new ProfessorRepositoryImp(conexao)
+const getByIdProfessor = new GetByIdProfessor(professorRepository)
+export const professorController = new ProfessorController(getByIdProfessor)

@@ -3,10 +3,7 @@ import { ProfessorRepository } from "../../domain/repository/professorRepository
 import { Conexao } from "../database/conexao"
 
 export class ProfessorRepositoryImp implements ProfessorRepository {
-  private conexao: Conexao
-  constructor() {
-    this.conexao = Conexao.getInstance()
-  }
+  constructor(private conexao: Conexao) {}
 
   async getById(id: number): Promise<Professor | undefined> {
     const resultado = await this.conexao.query('SELECT * FROM professor WHERE id_professor = $1', [id])
