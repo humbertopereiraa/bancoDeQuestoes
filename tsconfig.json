@@ -8,5 +8,13 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowJs": true
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "coverage",
+    "tests",
+    "jest.config.js"
+  ]
 }
