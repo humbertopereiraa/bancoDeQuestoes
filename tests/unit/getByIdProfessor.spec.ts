@@ -1,5 +1,5 @@
 import { Professor } from "../../src/domain/entity/professor"
-import { GetByIdProfessor } from '../../src/application/usecases/getByIdProfessor'
+import { GetByIdProfessor } from '../../src/usecases/getByIdProfessor'
 
 class ProfessorRepositoryImpMock {
   async getById(id: number): Promise<Professor | undefined> {

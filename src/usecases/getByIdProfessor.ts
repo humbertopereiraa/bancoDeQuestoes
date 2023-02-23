@@ -1,5 +1,5 @@
-import { Professor } from "../../domain/entity/professor"
-import { ProfessorRepository } from "../../domain/repository/professorRepository"
+import { Professor } from "../domain/entity/professor"
+import { ProfessorRepository } from "../domain/repository/professorRepository"
 
 export class GetByIdProfessor {
   constructor(private professorRepositoryImp: ProfessorRepository) {}

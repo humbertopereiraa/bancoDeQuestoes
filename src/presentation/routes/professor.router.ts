@@ -6,3 +6,5 @@ app.get('/professorId', [
   check('id').isNumeric().withMessage('O campo id deve ser um número'),
   check('id').notEmpty().withMessage('O campo id não pode ser vazio')
 ], professorController.getById.bind(professorController))
+
+app.get('/professores', [], professorController.getAll.bind(professorController))
