@@ -1,18 +1,11 @@
-import express, { Application } from 'express'
-import cors from "cors"
-import helmet from "helmet"
+import { ExpressAdapter } from './infra/http/expressAdapter'
+// import HapiAdapter from './infra/http/hapiAdapter'
+import { Http } from './infra/http/http'
 
 class App {
-  readonly app: Application
+  readonly app: Http
   constructor() {
-    this.app = express()
-    this.config()
-  }
-
-  private config(): void {
-    this.app.use(helmet())
-    this.app.use(cors())
-    this.app.use(express.json())
+    this.app = new ExpressAdapter()
   }
 }
 
