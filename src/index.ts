@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv"
 dotenv.config()
-import app from "./app"
+import { servidor } from "./app"
 import path from "path"
 import { Configuracao } from "./configuracao"
 
@@ -11,6 +11,6 @@ consign({
   cwd: path.join(__dirname, 'presentation'),
   locale: 'pt-br',
   extensions: ['.js', '.ts', '.json', '.node']
-}).include('routes').into(app)
+}).include('routes').into(servidor.app)
 
-app.listen(PORT)
+servidor.app.listen(PORT)

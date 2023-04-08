@@ -19,7 +19,7 @@ describe('ProfessorController', () => {
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn() }
       const professor = { id: 1, nome: 'any_nome', sobrenome: 'any_sobrenome', email: 'any@email.com' } as Professor
       (GetByIdProfessor.prototype.execute as any).mockResolvedValue(professor)
-      await professorController.getById(req as any, res as any)
+      await professorController.getById(req as any)
       expect(res.status).toHaveBeenCalledWith(200)
       expect(res.json).toHaveBeenCalledWith(professor)
     })
@@ -34,7 +34,7 @@ describe('ProfessorController', () => {
           { msg: 'O campo id não pode ser vazio' }
         ]
       })
-      await professorController.getById(req as any, res as any)
+      await professorController.getById(req as any)
       expect(res.status).toHaveBeenCalledWith(400)
       expect(res.json).toHaveBeenCalledWith({
         errors: [
@@ -53,7 +53,7 @@ describe('ProfessorController', () => {
           { msg: 'O campo id deve ser um número' }
         ]
       })
-      await professorController.getById(req as any, res as any)
+      await professorController.getById(req as any)
       expect(res.status).toHaveBeenCalledWith(400)
       expect(res.json).toHaveBeenCalledWith({
         errors: [
@@ -68,7 +68,7 @@ describe('ProfessorController', () => {
       const erro = new Error('Erro Interno do Servidor');
       (validationResult as any).mockReturnValueOnce({ isEmpty: () => true, array: () => [] });
       (GetByIdProfessor.prototype.execute as any).mockImplementation(erro)
-      await professorController.getById(req as any, res as any)
+      await professorController.getById(req as any)
       expect(res.status).toHaveBeenCalledWith(500)
       expect(res.json).toHaveBeenCalledWith(erro)
     });
@@ -83,7 +83,7 @@ describe('ProfessorController', () => {
         { id: 1, nome: 'any_nome2', sobrenome: 'any_sobrenome2', email: 'any2@email.com' }
       ] as Professor[]
       (GetAllProfessor.prototype.execute as any).mockResolvedValue(professores)
-      await professorController.getAll(req as any, res as any)
+      await professorController.getAll(req as any)
       expect(res.status).toHaveBeenCalledWith(200)
       expect(res.json).toHaveBeenCalledWith(professores)
     })
@@ -93,7 +93,7 @@ describe('ProfessorController', () => {
       const res = mockResponse()
       const erro = new Error('Erro Interno do Servidor');
       (GetAllProfessor.prototype.execute as any).mockImplementation(erro)
-      await professorController.getAll(req as any, res as any)
+      await professorController.getAll(req as any)
       expect(res.status).toHaveBeenCalledWith(500)
       expect(res.json).toHaveBeenCalledWith(erro)
     });
@@ -106,7 +106,7 @@ describe('ProfessorController', () => {
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn() }
       const newProfessor = { id: 1, nome: 'any_nome', sobrenome: 'any_sobrenome', email: 'any@email.com' } as Professor
       (InserirProfessor.prototype.execute as any).mockResolvedValue(newProfessor)
-      await professorController.inserir(req as any, res as any)
+      await professorController.inserir(req as any)
       expect(res.status).toHaveBeenCalledWith(200)
       expect(res.json).toHaveBeenCalledWith(newProfessor)
     })

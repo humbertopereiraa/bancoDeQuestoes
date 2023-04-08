@@ -1,12 +1,17 @@
+import { PostgresConexao } from './infra/database/postgresConexao'
 import { ExpressAdapter } from './infra/http/expressAdapter'
-// import HapiAdapter from './infra/http/hapiAdapter'
 import { Http } from './infra/http/http'
+import { ProfessorController } from './presentation/controller/professorController'
+import { ProfessorControllerFactory } from './presentation/factories/professorControllerFactory'
 
-class App {
-  readonly app: Http
-  constructor() {
-    this.app = new ExpressAdapter()
-  }
+interface Servidor {
+  app: Http
+  professorController: ProfessorController
 }
 
-export default new App().app
+const conexao = PostgresConexao.getInstance()
+const professorControllerFactory = new ProfessorControllerFactory(conexao)
+export const servidor: Servidor = {
+  app: new ExpressAdapter(),
+  professorController: professorControllerFactory.criarProfessorController()
+}

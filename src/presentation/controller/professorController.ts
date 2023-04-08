@@ -1,11 +1,9 @@
 import { GetByIdProfessor } from "../../usecases/getByIdProfessor"
 import { GetAllProfessor } from '../../usecases/getAllProfessor'
-import { Conexao } from "../../infra/database/conexao"
-import { ProfessorRepositoryImp } from "../../infra/repository/professorRepositoryImp"
 import { InserirProfessor } from "../../usecases/inserirProfessor"
 import { Professor } from "../../domain/entity/professor"
 
-class ProfessorController {
+export class ProfessorController {
   constructor(private getByIdProfessor: GetByIdProfessor, private getAllProfessor: GetAllProfessor,
     private inserirProfessor: InserirProfessor) {
   }
@@ -26,7 +24,7 @@ class ProfessorController {
     })
   }
 
-  async getAll(_req: any): Promise<Professor[]> {
+  async getAll(): Promise<Professor[]> {
     return new Promise<Professor[]>(async (resolve, reject) => {
       try {
         let professores = await this.getAllProfessor.execute()
@@ -58,10 +56,3 @@ class ProfessorController {
     })
   }
 }
-
-const conexao = Conexao.getInstance()
-const professorRepository = new ProfessorRepositoryImp(conexao)
-const getByIdProfessor = new GetByIdProfessor(professorRepository)
-const getAllProfessor = new GetAllProfessor(professorRepository)
-const inserirProfessor = new InserirProfessor(professorRepository)
-export const professorController = new ProfessorController(getByIdProfessor, getAllProfessor, inserirProfessor)
