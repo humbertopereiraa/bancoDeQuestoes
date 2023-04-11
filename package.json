@@ -5,7 +5,9 @@
     "main": "index.ts",
     "scripts": {
         "dev": "nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"ts-node ./src/index.ts\"",
-        "build": "tsc && copy package.json dist && copy .env dist",
+        "clean": "if exist dist rmdir /s /q dist",
+        "copy": "copy package.json dist && copy .env dist",
+        "build": "npm run clean && tsc && npm run copy",
         "start": "node ./dist/index.js",
         "test": "jest",
         "test:staged": "jest"
