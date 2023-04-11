@@ -24,7 +24,7 @@ export class ProfessorController {
     })
   }
 
-  async getAll(): Promise<Professor[]> {
+  getAll(): Promise<Professor[]> {
     return new Promise<Professor[]>(async (resolve, reject) => {
       try {
         let professores = await this.getAllProfessor.execute()
@@ -41,7 +41,7 @@ export class ProfessorController {
     })
   }
 
-  async inserir(req: Request): Promise<Professor> {
+  inserir(req: Request): Promise<Professor> {
     return new Promise<Professor>(async (resolve, reject) => {
       try {
         const professor: unknown = req.body

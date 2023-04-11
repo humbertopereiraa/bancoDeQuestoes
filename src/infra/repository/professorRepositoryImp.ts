@@ -10,6 +10,11 @@ export class ProfessorRepositoryImp implements ProfessorRepository {
     return (resultado?.rows && resultado?.rows.length) ? resultado.rows[0] : undefined
   }
 
+  async getByEmail(email: string): Promise<Professor | undefined> {
+    const resultado = await this.conexao.query('SELECT * FROM professor WHERE email = $1', [email])
+    return (resultado?.rows && resultado?.rows.length) ? resultado.rows[0] : undefined
+  }
+
   async getAll(): Promise<Professor[]> {
     const resultado = await this.conexao.query('SELECT * FROM professor', [])
     return resultado?.rows ? resultado.rows : []

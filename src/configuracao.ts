@@ -3,6 +3,9 @@ const Configuracao = {
     title: process.env.APP_NAME,
     version: process.env.APP_VERSION
   },
+  token: {
+    chave: process.env.SECRET
+  },
   http: {
     port: parseInt(process.env.HTTP_PORT ?? '7000')
   },

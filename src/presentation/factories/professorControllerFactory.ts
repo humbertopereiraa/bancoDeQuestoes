@@ -6,10 +6,7 @@ import { GetByIdProfessor } from "../../usecases/getByIdProfessor"
 import { InserirProfessor } from "../../usecases/inserirProfessor"
 
 export class ProfessorControllerFactory {
-  private readonly conexao: Conexao
-  constructor(conexao: Conexao) {
-    this.conexao = conexao
-  }
+  constructor(private conexao: Conexao) { }
 
   criarProfessorController(): ProfessorController {
     const professorRepository = new ProfessorRepositoryImp(this.conexao)

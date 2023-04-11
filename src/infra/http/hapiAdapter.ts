@@ -1,12 +1,13 @@
 import { BAD_REQUEST } from "../../utils/error"
 import { RequestParams, validacao } from "../../utils/request-validador"
-import { Http } from "./http"
+import HTTP from "./http"
 
 const Hapi = require('@hapi/hapi')
 
-export default class HapiAdapter implements Http {
+export default class HapiAdapter extends HTTP {
   app: any
   constructor() {
+    super()
     this.app = Hapi.server({
       host: 'localhost'
     })
@@ -16,7 +17,7 @@ export default class HapiAdapter implements Http {
     this.app.route({
       method: metodo,
       path: url,
-      handler: async(req: any, reply: any) => {
+      handler: async (req: any, reply: any) => {
         try {
           if (validacoes.length) {
             const parametros = req.query || req.body

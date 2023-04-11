@@ -1,13 +1,14 @@
-import { Http } from "./http"
+import HTTP from "./http"
 import express, { Application } from 'express'
 import cors from "cors"
 import helmet from "helmet"
 import { RequestParams, validacao } from "../../utils/request-validador"
 import { BAD_REQUEST, OK, SERVER_ERROR } from "../../utils/error"
 
-export class ExpressAdapter implements Http {
+export class ExpressAdapter extends HTTP {
   app: Application
   constructor() {
+    super()
     this.app = express()
     this.config()
   }
